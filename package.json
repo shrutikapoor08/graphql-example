@@ -1,15 +1,18 @@
 {
-  "name": "GraphQL Boilerplate",
+  "name": "graphql-boilerplate",
   "version": "1.0.0",
   "description": "",
   "main": "server/server.js",
   "dependencies": {
     "@babel/core": "^7.2.2",
+    "apollo-cache-inmemory": "^1.4.2",
     "apollo-client": "^2.4.8",
+    "apollo-link": "^1.2.6",
+    "apollo-link-error": "^1.1.5",
+    "apollo-link-http": "^1.5.9",
     "axios": "^0.18.0",
     "babel": "^6.23.0",
     "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.3",
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.5",
     "babel-plugin-transform-runtime": "^6.23.0",
@@ -37,6 +40,7 @@
     "react": "^16.7.0",
     "react-apollo": "^2.3.3",
     "react-dom": "^16.7.0",
+    "react-hot-loader": "^4.6.3",
     "react-router": "^4.3.1",
     "style-loader": "^0.23.1",
     "webpack-dev-middleware": "^3.5.0"
@@ -46,7 +50,10 @@
     "eslint-loader": "^2.1.1",
     "webpack": "^4.29.0",
     "webpack-cli": "^3.2.1",
-    "webpack-dev-server": "^3.1.14"
+    "webpack-dev-server": "^3.1.14",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.3.1"
   },
   "scripts": {
     "start": "webpack-dev-server --config ./webpack.config.js --mode development"
