@@ -5,7 +5,8 @@ const fetch = require("node-fetch");
 const schema = buildSchema(`
   type Query {
     hello: String
-    blogs: [ String ] 
+    blogs(username: String!): [ String ] 
+    blogsError(username: String!): [ String ] 
   }
 `);
 
@@ -14,23 +15,30 @@ const root = {
   hello: () => {
     return "Hello world!";
   },
-  blogs: () => {
-    //REST API function.
-
-    const username = "shrutikapoor08";
+  blogs: (args) => {
+      const {username} = args;
     const API_ENDPOINT = `https://dev.to/api/articles?username=${username}`;
 
-    return fetch(API_ENDPOINT, {
-      headers: { Accept: "application/json" }
-    })
+    return fetch(API_ENDPOINT)
       .then(data => data.json())
       .then(response => {
-        return response.reduce((arr, item) => {
-            arr.push(item.title)
-            return arr;
-        }, []);
+           return response.reduce( (arr, item) => {
+                arr.push(item.title)
+                return arr;
+            }, []);
       });
-  }
+  },
+    blogsError: (args) => {
+        const {username} = args;
+        const API_ENDPOINT = `https://dev.to/api/articles/username=${username}`;
+
+        return fetch(API_ENDPOINT)
+            .then(response => {
+                const { status } = response;
+                throw new Error(`This threw an error, ${status} `);
+            });
+
+    }
 };
 
 module.exports = {
