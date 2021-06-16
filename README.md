@@ -1,5 +1,5 @@
-# graphql-starter-boilerplate
-Boilerplate to easily get started on React and GraphQL projects
+# GraphQL Boilerplate
+Boilerplate to easily get started on React and GraphQL projects for Client and Server side implementation
 
 
 
